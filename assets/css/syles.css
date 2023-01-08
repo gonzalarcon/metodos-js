@@ -1,0 +1,33 @@
+/* .container{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+}
+
+#nuevoInvitado{
+    width: 700px;
+}
+.main{
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tasks{
+    width: 500px;
+    display: flex;
+}
+
+.main{
+    border: solid 1px black;
+}
+
+.summary{
+    border: solid 1px black
+} */
