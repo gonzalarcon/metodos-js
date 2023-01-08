@@ -25,13 +25,14 @@ const agregarTarea = () =>{
 };
 
 const updateList = () =>{
-    let row = "", countTareasRealizadas = 0;
+    let row = "";
+    let contarTareasRealizadas = 0;
     for(let task of tasks){
-        if(nuevaTarea.status){
-            countTareasRealizadas++;
+        if(task.status){
+         contarTareasRealizadas++;
         }
         row += 
-            `<tr class="${task.status ? 'bg-secondary' : 'bg-Light'}">
+            `<tr class="bg-Light">
                 <td>${task.nombre}</td>
                 <td id="${task.id}">${task.id}</td>
                 <td class="text-right"> <button onclick="updateStatus(${task.id})" class="btn btn-${task.status ? 'success' : 'warning'}">${task.status ? 'Realizada' : 'Pendiente'}</button></td>
@@ -43,7 +44,7 @@ const updateList = () =>{
         tareaInput.value='';
 
         TareasTotal.innerHTML=tasks.length;
-        TareasRealizadas.innerHTML=countTareasRealizadas;   
+        TareasRealizadas.innerHTML = contarTareasRealizadas;   
 
 }            
 
