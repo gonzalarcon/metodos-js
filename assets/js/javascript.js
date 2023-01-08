@@ -1,5 +1,4 @@
 const btnAgregar = document.querySelector("#newTask")
-// const task = document.querySelector("#newTask")
 const listaDeTareas = document.querySelector("#tasks")
 const tareaInput = document.querySelector("#nuevaTarea")
 const TareasTotal = document.querySelector("#totalTasks")
@@ -26,36 +25,38 @@ const agregarTarea = () =>{
 };
 
 const updateList = () =>{
-    let row = ""; countTaskReady=0;
+    let row = "", countTareasRealizadas = 0;
     for(let task of tasks){
         if(nuevaTarea.status){
-            countTaskReady++;
+            countTareasRealizadas++;
         }
         row += 
-            `<tr class="${task.status ? 'bg-success' : 'bg-Light'}">
+            `<tr class="${task.status ? 'bg-secondary' : 'bg-Light'}">
                 <td>${task.nombre}</td>
                 <td id="${task.id}">${task.id}</td>
-                <td class="text-right"> <button onclick"updateStatus(${task.id}" class="btn btn-${task.status ? 'success' : 'warning'}">${task.status ? 'Realizada' : 'Pendiente'}</button></td>
-                <td class="text-right"><button onclick="borrar(${task.id})" class="btn btn-danger" id="btnEliminar">Borrar Tarea</button></td>
+                <td class="text-right"> <button onclick="updateStatus(${task.id})" class="btn btn-${task.status ? 'success' : 'warning'}">${task.status ? 'Realizada' : 'Pendiente'}</button></td>
+                <td class="text-right"> <button onclick="borrar(${task.id})" class="btn btn-danger" id="btnEliminar">Borrar Tarea</button></td>
             </tr>`;
     }
             
         listaDeTareas.innerHTML=row;
         tareaInput.value='';
+
         TareasTotal.innerHTML=tasks.length;
-        TareasRealizadas.innerHTML=countTaskReady;   
+        TareasRealizadas.innerHTML=countTareasRealizadas;   
 
 }            
 
 const updateStatus=(taskId)=>{
-    const index = tareaInput.list.findIndex(task=>task.id===TaskId);
-    tareaInput[index].status= !tareaInput[index].status;
+    const index = tasks.findIndex(task=>task.id===taskId);
+    tasks[index].status= !tasks[index].status;
+    updateList();
 }
 
 const borrar = (taskId) =>{
     const confirms = confirm('¿Seguro que deseas eliminar esta tarea?');
     if(confirms){
-        const index = tareaInput.list.findIndex(task=>task.id===TaskId)
+        const index = tasks.findIndex(task=>task.id===taskId)
         tasks.splice(index,1);  
         updateList();
     };
